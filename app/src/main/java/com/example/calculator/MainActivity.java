@@ -31,7 +31,13 @@ public class MainActivity extends AppCompatActivity {
         textView2 = tv2.getText().toString();
 
         if(view.getId() == R.id.zero){
-            tv2.setText(textView2 + "0");
+            if(textView2.equals("0"))
+            {
+                tv2.setText("0");
+            }
+            else {
+                tv2.setText(textView2 + "0");
+            }
         }
         else if(view.getId() == R.id.one){
             tv2.setText(textView2 + "1");
