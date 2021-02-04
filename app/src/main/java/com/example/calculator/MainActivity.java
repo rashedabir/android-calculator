@@ -70,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
             z = true;
         }
         else if(view.getId() == R.id.dot){
-            tv2.setText("0"+ textView2 + ".");
+            if(textView2.contains(".")){
+                tv2.setText(textView2);
+            }
+            else {
+                tv2.setText("0"+ textView2 + ".");
+            }
         }
     }
 
