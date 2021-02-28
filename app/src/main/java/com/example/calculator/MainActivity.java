@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     Double num1, num2, result;
     String textView1, textView2, operator;
     boolean z = true;
+    RadioButton selectedButton;
+    String values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,9 +129,15 @@ public class MainActivity extends AppCompatActivity {
             num1 = Double.parseDouble(textView2);
             tv2.setText("0");
         }
-        else if(view.getId() == R.id.percentage){
+        else if(view.getId() == R.id.negetive){
             operator = "-";
-            tv2.setText("-" + textView2);
+            if(textView2.contains("-")){
+                textView2 = textView2.replaceAll("-", "");
+                tv2.setText(textView2);
+            }
+            else {
+                tv2.setText("-" + textView2);
+            }
         }
     }
 
@@ -160,7 +169,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void aboutMe(View view) {
-        Intent aboutMe = new Intent(MainActivity.this, MainActivity2.class);
-        startActivity(aboutMe);
+        selectedButton = findViewById(R.id.about);
+        values = selectedButton.getText().toString();
+        if(values.equals("About")){
+            Intent aboutMe = new Intent(MainActivity.this, MainActivity2.class);
+            startActivity(aboutMe);
+        }
     }
 }
